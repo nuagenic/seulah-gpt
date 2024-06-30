@@ -6,10 +6,19 @@ type ChatInputProps = {
 
 const ChatInput = (props: ChatInputProps) => {
   const [message, setMessage] = useState('')
+  const [isComposing, setIsComposing] = useState(false)
 
   const handleSend = () => {
-    props.onSend(message)
-    setMessage('')
+    if (message.trim() != '') {
+      props.onSend(message)
+      setMessage('')
+    }
+  }
+
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (isComposing === false && event.key === 'Enter') {
+      handleSend()
+    }
   }
 
   return (
@@ -19,8 +28,10 @@ const ChatInput = (props: ChatInputProps) => {
         type="text"
         value={message}
         onChange={e => setMessage(e.target.value)}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={() => setIsComposing(false)}
+        onKeyDown={handleKeyDown}
       />
-      <button onClick={handleSend}>Send</button>
     </div>
   )
 }

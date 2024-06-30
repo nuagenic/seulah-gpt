@@ -16,28 +16,32 @@ const ChatOutput = (props: ChatOutputProps) => {
   const freq = 90 + Math.random() * 50
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setPieceIndex(prevPieceIndex => {
-        if (prevPieceIndex < messagePieces.length) {
-          const newPieceIndex = prevPieceIndex + 1
-          setRenderedMessage(prevRenderedMessage => {
-            const newRenderedMessage = [
-              ...prevRenderedMessage,
-              messagePieces[prevPieceIndex],
-            ]
-            setJoinedMessage(newRenderedMessage.join(''))
-            return newRenderedMessage
-          })
-          return newPieceIndex
-        } else {
-          clearInterval(interval)
-          console.log('clear')
-          return prevPieceIndex
-        }
-      })
-    }, freq) // 1초마다 실행
-    return () => clearInterval(interval) // 컴포넌트 언마운트 시 인터벌 정리
-  }, [messagePieces, freq])
+    if (props.by === 'SEULA') {
+      const interval = setInterval(() => {
+        setPieceIndex(prevPieceIndex => {
+          if (prevPieceIndex < messagePieces.length) {
+            const newPieceIndex = prevPieceIndex + 1
+            setRenderedMessage(prevRenderedMessage => {
+              const newRenderedMessage = [
+                ...prevRenderedMessage,
+                messagePieces[prevPieceIndex],
+              ]
+              setJoinedMessage(newRenderedMessage.join(''))
+              return newRenderedMessage
+            })
+            return newPieceIndex
+          } else {
+            clearInterval(interval)
+            console.log('clear')
+            return prevPieceIndex
+          }
+        })
+      }, freq)
+      return () => clearInterval(interval)
+    } else {
+      setJoinedMessage(props.message)
+    }
+  }, [props.by, messagePieces, freq])
 
   const renderByLine = (message: string) => {
     return message
