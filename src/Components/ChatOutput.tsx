@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import classNames from 'classnames'
 
 type Writer = 'SEULA' | 'YOU'
 
@@ -32,7 +33,6 @@ const ChatOutput = (props: ChatOutputProps) => {
             return newPieceIndex
           } else {
             clearInterval(interval)
-            console.log('clear')
             return prevPieceIndex
           }
         })
@@ -49,10 +49,14 @@ const ChatOutput = (props: ChatOutputProps) => {
       .map((line, index) => <div key={index}>{line}</div>)
   }
 
+  const textColor = props.by === 'SEULA' ? 'text-blue2' : 'text-white'
+
+  const propsByClass = classNames(textColor, 'leading-10', 'w-20')
+
   return (
     <div className="flex flex-row gap-8">
-      <div>{props.by}</div>
-      <div>{renderByLine(joinedMessage)}</div>
+      <div className={propsByClass}>{props.by}</div>
+      <div className="leading-10">{renderByLine(joinedMessage)}</div>
     </div>
   )
 }

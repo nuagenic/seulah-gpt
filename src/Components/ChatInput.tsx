@@ -22,8 +22,8 @@ const ChatInput = (props: ChatInputProps) => {
   }
 
   return (
-    <div className="flex flex-row gap-8">
-      <div>Chat:</div>
+    <div className="flex flex-row items-start gap-8 h-28">
+      <div className="leading-10 w-20">CHAT:</div>
       <input
         type="text"
         value={message}
@@ -31,6 +31,7 @@ const ChatInput = (props: ChatInputProps) => {
         onCompositionStart={() => setIsComposing(true)}
         onCompositionEnd={() => setIsComposing(false)}
         onKeyDown={handleKeyDown}
+        className="block bg-transparent border-none focus:outline-none text-white w-full caret-white leading-10"
       />
     </div>
   )

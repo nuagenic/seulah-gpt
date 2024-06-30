@@ -3,6 +3,7 @@ import './App.css'
 import Header from './Components/Header'
 import ChatOutput from './Components/ChatOutput'
 import ChatInput from './Components/ChatInput'
+import Line from './Components/Line'
 
 const chats: { by: 'SEULA' | 'YOU'; message: string }[] = [
   {
@@ -30,8 +31,8 @@ const App: React.FC = () => {
   useEffect(() => {
     if (isInputHandled && chatIndex < chats.length) {
       const interval = setInterval(() => {
-        setDisplayedChats(prevChats => [...prevChats, chats[chatIndex]])
         setChatIndex(prevIndex => prevIndex + 1)
+        setDisplayedChats(prevChats => [...prevChats, chats[chatIndex]])
       }, 2500)
 
       return () => clearInterval(interval)
@@ -39,13 +40,16 @@ const App: React.FC = () => {
   }, [isInputHandled, chatIndex])
 
   return (
-    <>
+    <div className="bg-blue1 h-screen text-white p-8 flex flex-col justify-between">
       <Header />
-      {displayedChats.map((chat, index) => (
-        <ChatOutput key={index} by={chat.by} message={chat.message} />
-      ))}
-      <ChatInput onSend={handleSend} />
-    </>
+      <div className="flex flex-col text-2xl gap-5">
+        {displayedChats.map((chat, index) => (
+          <ChatOutput key={index} by={chat.by} message={chat.message} />
+        ))}
+        <Line />
+        <ChatInput onSend={handleSend} />
+      </div>
+    </div>
   )
 }
 
