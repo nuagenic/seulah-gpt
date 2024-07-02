@@ -40,7 +40,7 @@ const App: React.FC = () => {
   }, [isInputHandled, chatIndex])
 
   return (
-    <div className="bg-blue1 h-screen text-white p-8 flex flex-col justify-between">
+    <div className="bg-background h-screen text-white p-28 flex flex-col justify-between">
       <Header />
       <div className="flex flex-col text-2xl gap-5">
         {displayedChats.map((chat, index) => (

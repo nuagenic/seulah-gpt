@@ -49,14 +49,16 @@ const ChatOutput = (props: ChatOutputProps) => {
       .map((line, index) => <div key={index}>{line}</div>)
   }
 
-  const textColor = props.by === 'SEULA' ? 'text-blue2' : 'text-white'
+  const textColor = props.by === 'SEULA' ? 'text-mint' : 'text-white'
 
-  const propsByClass = classNames(textColor, 'leading-10', 'w-20')
+  const propsByClass = classNames(textColor, 'w-20')
 
   return (
     <div className="flex flex-row gap-8">
-      <div className={propsByClass}>{props.by}</div>
-      <div className="leading-10">{renderByLine(joinedMessage)}</div>
+      <div className={propsByClass} style={{ lineHeight: '3rem' }}>
+        {props.by}
+      </div>
+      <div style={{ lineHeight: '3rem' }}>{renderByLine(joinedMessage)}</div>
     </div>
   )
 }

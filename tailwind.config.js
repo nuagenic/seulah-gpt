@@ -6,15 +6,16 @@ module.exports = {
       keyframes: {
         blink: {
           '0%, 100%': { opacity: '1' },
-          '50%': { opacity: '0' },
+          '75.3%': { opacity: '0.7' },
         },
       },
       animation: {
-        blink: 'blink 2s step-end infinite',
+        blink: 'blink 1.54s step-end infinite',
       },
       colors: {
-        blue1: '#020962',
-        blue2: '#9DC2E9',
+        background: '#0036F9',
+        mint: '#40E9E3',
+        prompt: '#00FFFF',
       },
     },
   },
