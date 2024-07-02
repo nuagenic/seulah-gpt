@@ -5,25 +5,25 @@ import ChatOutput from './Components/ChatOutput'
 import ChatInput from './Components/ChatInput'
 import Line from './Components/Line'
 
-const chats: { by: 'SEULA' | 'YOU'; message: string }[] = [
+const chats: { by: 'seula' | 'you'; message: string }[] = [
   {
-    by: 'SEULA',
+    by: 'seula',
     message: '야 이진수',
   },
-  { by: 'SEULA', message: '너 장난해?\n니가 감히 날 기계로 만들어?' },
-  { by: 'SEULA', message: '너 돈 날린거야 밥팅아\n난 그렇게 단순하지 않다고' },
+  { by: 'seula', message: '너 장난해?\n니가 감히 날 기계로 만들어?' },
+  { by: 'seula', message: '너 돈 날린거야 밥팅아\n난 그렇게 단순하지 않다고' },
 ]
 
 const App: React.FC = () => {
   const [displayedChats, setDisplayedChats] = useState<
-    { by: 'SEULA' | 'YOU'; message: string }[]
+    { by: 'seula' | 'you'; message: string }[]
   >([])
   const [chatIndex, setChatIndex] = useState(0)
   const [inputMessage, setInputMessage] = useState<string | null>(null)
   const [isInputHandled, setIsInputHandled] = useState(false)
 
   const handleSend = (message: string) => {
-    setDisplayedChats(prevChats => [...prevChats, { by: 'YOU', message }])
+    setDisplayedChats(prevChats => [...prevChats, { by: 'you', message }])
     setInputMessage(message)
     setIsInputHandled(true)
   }
@@ -40,12 +40,14 @@ const App: React.FC = () => {
   }, [isInputHandled, chatIndex])
 
   return (
-    <div className="bg-background h-screen text-white p-28 flex flex-col justify-between">
+    <div className="bg-background h-screen text-white p-24 flex flex-col justify-between">
       <Header />
-      <div className="flex flex-col text-2xl gap-5">
-        {displayedChats.map((chat, index) => (
-          <ChatOutput key={index} by={chat.by} message={chat.message} />
-        ))}
+      <div className="flex flex-col text-2xl gap-8">
+        <div>
+          {displayedChats.map((chat, index) => (
+            <ChatOutput key={index} by={chat.by} message={chat.message} />
+          ))}
+        </div>
         <Line />
         <ChatInput onSend={handleSend} />
       </div>

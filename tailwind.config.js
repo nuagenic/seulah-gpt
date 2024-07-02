@@ -2,6 +2,11 @@
 module.exports = {
   content: ['./src/**/*.{js,jsx,ts,tsx}'],
   theme: {
+    fontFamily: {
+      basic: ['D2Coding', 'sans-serif'],
+      seula: ['Leferi', 'sans-serif'],
+      chat: ['AppleSD', 'sans-serif'],
+    },
     extend: {
       keyframes: {
         blink: {
