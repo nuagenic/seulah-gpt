@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
-type Writer = 'SEULA' | 'YOU'
+
+type Writer = 'seula' | 'you'
 
 type ChatOutputProps = {
   by: Writer
@@ -17,7 +18,7 @@ const ChatOutput = (props: ChatOutputProps) => {
   const freq = 90 + Math.random() * 50
 
   useEffect(() => {
-    if (props.by === 'SEULA') {
+    if (props.by === 'seula') {
       const interval = setInterval(() => {
         setPieceIndex(prevPieceIndex => {
           if (prevPieceIndex < messagePieces.length) {
@@ -49,14 +50,18 @@ const ChatOutput = (props: ChatOutputProps) => {
       .map((line, index) => <div key={index}>{line}</div>)
   }
 
-  const textColor = props.by === 'SEULA' ? 'text-blue2' : 'text-white'
+  const textColor = props.by === 'seula' ? 'text-mint' : 'text-white'
 
-  const propsByClass = classNames(textColor, 'leading-10', 'w-20')
+  const propsByClass = classNames(textColor, 'font-seula', 'w-20')
 
   return (
-    <div className="flex flex-row gap-8">
-      <div className={propsByClass}>{props.by}</div>
-      <div className="leading-10">{renderByLine(joinedMessage)}</div>
+    <div className="flex flex-row gap-8 items-baseline leading-none">
+      <div className={propsByClass} style={{ lineHeight: '3rem' }}>
+        {props.by}
+      </div>
+      <div className="font-chat text-xl" style={{ lineHeight: '3rem' }}>
+        {renderByLine(joinedMessage)}
+      </div>
     </div>
   )
 }
