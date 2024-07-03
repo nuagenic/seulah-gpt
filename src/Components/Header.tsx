@@ -7,7 +7,11 @@ const Header = () => {
           v1.0.0
         </h1>
       </div>
-      <img className="w-8 h-8 self-center" src="/close.png" alt="" />
+      <img
+        className="w-8 h-8 self-center"
+        src={process.env.PUBLIC_URL + '/close.png'}
+        alt=""
+      />
     </div>
   )
 }
