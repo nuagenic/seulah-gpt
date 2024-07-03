@@ -49,7 +49,7 @@ const App: React.FC = () => {
       const timeout = setTimeout(() => {
         setDisplayedChats(prevChats => [...prevChats, chats[chatIndex]])
         setChatIndex(prevIndex => prevIndex + 1)
-      }, 2000)
+      }, 1500)
       return () => clearTimeout(timeout)
     }
   }, [isInputHandled, flags, chatIndex])
@@ -58,7 +58,7 @@ const App: React.FC = () => {
     <div className="bg-background h-screen text-white p-24 flex flex-col justify-between">
       <Header />
       <div className="flex flex-col text-2xl gap-8">
-        <div>
+        <div className="flex flex-col gap-6">
           {displayedChats.map((chat, index) => (
             <ChatOutput
               key={index}

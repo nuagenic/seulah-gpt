@@ -15,7 +15,7 @@ const ChatOutput = (props: ChatOutputProps) => {
   const [pieceIndex, setPieceIndex] = useState(0)
   const [renderedMessage, setRenderedMessage] = useState<string[]>([])
 
-  const freq = 90 + Math.random() * 50
+  const freq = 70 + Math.random() * 100
 
   useEffect(() => {
     if (props.by === 'seula') {
@@ -57,10 +57,10 @@ const ChatOutput = (props: ChatOutputProps) => {
 
   return (
     <div className="flex flex-row gap-8 items-baseline leading-none">
-      <div className={propsByClass} style={{ lineHeight: '3rem' }}>
+      <div className={propsByClass} style={{ lineHeight: '2rem' }}>
         {props.by}
       </div>
-      <div className="font-chat text-xl" style={{ lineHeight: '3rem' }}>
+      <div className="font-chat text-xl" style={{ lineHeight: '2rem' }}>
         {renderByLine(joinedMessage)}
       </div>
     </div>
