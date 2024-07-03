@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
+
 type Writer = 'seula' | 'you'
 
 type ChatOutputProps = {

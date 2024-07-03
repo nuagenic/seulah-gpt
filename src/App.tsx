@@ -5,6 +5,7 @@ import ChatOutput from './Components/ChatOutput'
 import ChatInput from './Components/ChatInput'
 import Line from './Components/Line'
 
+
 const chats: { by: 'seula' | 'you'; message: string }[] = [
   {
     by: 'seula',
