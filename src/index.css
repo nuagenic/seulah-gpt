@@ -24,8 +24,7 @@
 body {
   margin: 0;
   font-family: 'D2Coding', 'Leferi', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', 'Ro    'Droid Sans', 'Helvetica Neue', sans-serif;
-
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
