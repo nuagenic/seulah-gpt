@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 import classNames from 'classnames'
 
-
 type Writer = 'seula' | 'you'
 
 type ChatOutputProps = {
   by: Writer
   message: string
+  onFinish?: () => void
 }
 
 const ChatOutput = (props: ChatOutputProps) => {
@@ -34,6 +34,7 @@ const ChatOutput = (props: ChatOutputProps) => {
             return newPieceIndex
           } else {
             clearInterval(interval)
+            props.onFinish && props.onFinish()
             return prevPieceIndex
           }
         })
