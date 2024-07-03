@@ -1,25 +1,62 @@
 import { useEffect, useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './Components/Header'
 import ChatOutput from './Components/ChatOutput'
 import ChatInput from './Components/ChatInput'
 import Line from './Components/Line'
 
-const chats: { id?: number; by: 'seula' | 'you'; message: string }[] = [
+const chats: { by: 'seula' | 'you'; message: string }[] = [
   {
-    id: 1,
     by: 'seula',
     message: '야 이진수',
   },
-  { id: 2, by: 'seula', message: '너 장난해?\n니가 감히 날 기계로 만들어?' },
+  { by: 'seula', message: '너 장난해?\n니가 감히 날 기계로 만들어?' },
   {
-    id: 3,
     by: 'seula',
     message: '너 돈 날린거야 밥팅아\n난 그렇게 단순하지 않다고',
   },
 ]
 
-const App: React.FC = () => {
+const secondChats: { by: 'seula' | 'you'; message: string }[] = [
+  {
+    by: 'seula',
+    message: '나 없이 혼자 뭐 먹고 사나 몰라\n밥 절대 안 해 먹지?',
+  },
+  {
+    by: 'you',
+    message: '나도 해 먹거든. 나 부지런해',
+  },
+  {
+    by: 'seula',
+    message: '못 먹을 맛일 텐데...',
+  },
+  {
+    by: 'seula',
+    message: '내가 너 된장찌개 먹고 다시는 요리 안 시키잖아',
+  },
+  {
+    by: 'you',
+    message: '야 그래도 나 후라이는 잘해',
+  },
+  {
+    by: 'seula',
+    message: '그게 요리냐',
+  },
+]
+
+const App = () => {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />}></Route>
+        <Route path="/second" element={<Second />}></Route>
+      </Routes>
+    </BrowserRouter>
+  )
+}
+
+const Main = () => {
   const [displayedChats, setDisplayedChats] = useState<
     { by: 'seula' | 'you'; message: string }[]
   >([])
@@ -70,6 +107,23 @@ const App: React.FC = () => {
         </div>
         <Line />
         <ChatInput onSend={handleSend} />
+      </div>
+    </div>
+  )
+}
+
+const Second = () => {
+  return (
+    <div className="bg-background h-screen text-white p-24 flex flex-col justify-between">
+      <Header />
+      <div className="flex flex-col text-2xl gap-8">
+        <div className="flex flex-col gap-6">
+          {secondChats.map((chat, index) => (
+            <ChatOutput key={index} by={chat.by} message={chat.message} />
+          ))}
+        </div>
+        <Line />
+        <ChatInput />
       </div>
     </div>
   )

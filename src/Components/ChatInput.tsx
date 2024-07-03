@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 type ChatInputProps = {
-  onSend: (message: string) => void
+  onSend?: (message: string) => void
 }
 
 const ChatInput = (props: ChatInputProps) => {
@@ -10,7 +10,7 @@ const ChatInput = (props: ChatInputProps) => {
 
   const handleSend = () => {
     if (message.trim() != '') {
-      props.onSend(message)
+      props.onSend && props.onSend(message)
       setMessage('')
     }
   }
