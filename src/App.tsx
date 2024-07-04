@@ -21,19 +21,35 @@ const chats: { by: 'seula' | 'you'; message: string }[] = [
 const secondChats: { by: 'seula' | 'you'; message: string }[] = [
   {
     by: 'seula',
+    message: '밥은 먹었어?',
+  },
+  {
+    by: 'you',
+    message: '대충 먹고 왔지',
+  },
+  {
+    by: 'seula',
     message: '나 없이 혼자 뭐 먹고 사나 몰라\n밥 절대 안 해 먹지?',
   },
   {
     by: 'you',
-    message: '나도 해 먹거든. 나 부지런해',
+    message: '나도 해 먹거든',
+  },
+  {
+    by: 'you',
+    message: '나 부지런해',
   },
   {
     by: 'seula',
     message: '못 먹을 맛일 텐데...',
   },
   {
+    by: 'you',
+    message: '뭐?ㅋㅋ',
+  },
+  {
     by: 'seula',
-    message: '내가 너 된장찌개 먹고 다시는 요리 안 시키잖아',
+    message: '내가 그때 너 된장찌개 끓인 거 먹고\n다시는 요리 안 시키잖아',
   },
   {
     by: 'you',
