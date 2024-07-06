@@ -21,14 +21,6 @@ const chats: { by: 'seula' | 'you'; message: string }[] = [
 const secondChats: { by: 'seula' | 'you'; message: string }[] = [
   {
     by: 'seula',
-    message: '밥은 먹었어?',
-  },
-  {
-    by: 'you',
-    message: '대충 먹고 왔지',
-  },
-  {
-    by: 'seula',
     message: '나 없이 혼자 뭐 먹고 사나 몰라\n밥 절대 안 해 먹지?',
   },
   {
